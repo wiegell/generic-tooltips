@@ -30,15 +30,23 @@ class `TooltipService` {
 }
 
 DogTooltipComponent ..|>  `TooltipComponent &lt; T &gt;`: implements
-DogTooltipComponent --o DogTooltipModel : Aggregates
-DogFeatureComponent --o `TooltipService` : Aggregates
-DogFeatureComponent --o DogTooltipComponent : Assosiates
+DogTooltipComponent --> DogTooltipModel 
+DogFeatureComponent --o `TooltipService` 
+DogFeatureComponent --> DogTooltipComponent 
 
 
+HorseTooltipComponent -->  HorseTooltipModel 
 HorseTooltipComponent ..|>  `TooltipComponent &lt; T &gt;`: implements
-HorseTooltipComponent --o  HorseTooltipModel : Aggregates
 
 `TooltipService` --> `TooltipComponent &lt; T &gt;`
-HorseFeatureComponent --o `TooltipService` : Aggregates
-HorseFeatureComponent --o HorseTooltipComponent : Assosiates
+HorseFeatureComponent --> HorseTooltipComponent 
+HorseFeatureComponent --o `TooltipService` 
+
+AppComponent --> HorseFeatureComponent 
+AppComponent --o TooltipContainerComponent 
+TooltipContainerComponent --o TooltipService 
+AppComponent --> DogFeatureComponent 
+
+
+
 ```
